@@ -4,6 +4,8 @@
 
 这是一个工具脚本，用于根据 YAML 文件和特定的 Word 格式生成 API 文档。
 
+
+
 ## :herb:Installation
 
 `yarn add yaml-api-doc`
@@ -12,24 +14,28 @@
 
 `npm install yaml-api-doc`
 
+
+
 ## :herb:Usage
 
-1. 将你的 YAML 文件和 Word 文本放在项目目录下。
+将你的 YAML 文件和 Word 文本放在项目目录下。
 
-2. 引入 `exportWordDoc` 并调用：
+引入 `exportWordDoc` 并调用：
 
-   ```javascript
-   //test.js
-   import exportWordDoc from "yaml-api-doc";
+```javascript
+//test.js
+import exportWordDoc from "yaml-api-doc";
 
-   exportWordDoc(demoUrl, outUrl, fileName);
-   //demoUrl: word 模板路径
-   //outUrl: 输出文档路径
-   //fileName： yaml 文件路径
-   //例： exportWordDoc("in.docx", "out.docx", "openapi-resource.yaml");
-   ```
+exportWordDoc(demoUrl, outUrl, fileName);
+//demoUrl: word 模板路径
+//outUrl: 输出文档路径
+//fileName： yaml 文件路径
+//例： exportWordDoc("in.docx", "out.docx", "openapi-resource.yaml");
+```
 
-3. 运行 test.js ，生成的 API 文档将会写入到 outUrl 中。
+运行 test.js ，生成的 API 文档将会写入到 outUrl 中。
+
+
 
 ## :herb:YAML File Structure
 
@@ -74,8 +80,8 @@ components:
 
 ```yaml
 ## requestBody ###############################################
-	  ## 参数为object
-	  requestBody:
+      ## 参数为object
+      requestBody:
         description: 参数描述
         content:
           application/json:
@@ -96,7 +102,7 @@ components:
 
 
 ## parameters #################################################
-	  parameters:
+      parameters:
         - name: 参数名称
           description: 参数描述
           in: path # or query
@@ -109,7 +115,7 @@ components:
 
 ```yaml
 ## 输出参数为 array ################################################
-		  content:
+          content:
             application/json:
               schema:
                 type: array
@@ -118,14 +124,14 @@ components:
                   $ref: "#/components/schemas/basic_link_dto"
 
 ## 输出参数为 object ##############################################
-		  content:
+          content:
             application/json:
               schema:
                 description: 参数描述
                 $ref: "#/components/schemas/front_stream_progress_dto"
 
 ## 输出参数为 string(此处与number做区分是为了在处理格式时将enum的值作为参数名称)
-		  content:
+          content:
             application/json:
               schema:
                 type: string
@@ -134,7 +140,7 @@ components:
                 example: "simulation"
 
 ## 输出参数为 number ##############################################
-		  content:
+          content:
             application/json:
               schema:
                 description: 参数描述
@@ -142,6 +148,8 @@ components:
                 format: double
                 example: 20.0
 ```
+
+
 
 ## :herb: OutPut Array Structure
 
@@ -209,6 +217,8 @@ apiDetail = [
 ];
 ```
 
+
+
 ## :herb:Customization
 
 可以自定义传入 word 模板来控制生成文档的格式，参考文档格式如下（可见项目目录下`in.docx`）：
@@ -221,6 +231,8 @@ apiDetail = [
 
 #### :pushpin: 组件定义
 
+---
+
 {#components}
 
 表 {index} {name}定义
@@ -231,7 +243,13 @@ apiDetail = [
 
 {/components}
 
+---
+
+
+
 #### :pushpin: 接口详情
+
+---
 
 {#apiDetail}
 
@@ -249,11 +267,17 @@ apiDetail = [
 
 {/apiDetail}
 
+---
+
+
+
 #### :pushpin: more
 
 :zap: 使用 `{#api}` 和 `{/api}` 使用 api 数组内部的参数。
 
 :zap: word 格式可个性化定制。
+
+
 
 ## :herb:Output docx
 
@@ -263,6 +287,8 @@ apiDetail = [
 | 2        | 创建一个新的网络 | 提供网络参数，创建新的网络 |
 | 3        | 获取指定网络     | 根据网络 id 获取指定的网络 |
 
+
+
 | **序号** | **参数名称** | **参数类型** | **参数示例**     | **参数说明** |
 | -------- | ------------ | ------------ | ---------------- | ------------ |
 | 1        | net_id       | string       | net-1            | 网络 ID      |
@@ -270,6 +296,8 @@ apiDetail = [
 | 3        | status       | string       | enabled          | 网络状态     |
 | 4        | nodes        | array        | [basic_node_dto] | 节点列表     |
 | 5        | links        | array        | [basic_link_dto] | 链路列表     |
+
+
 
 | **接口名称**  | 获取所有网络           |              |              |
 | :------------ | :--------------------- | ------------ | ------------ |
@@ -280,6 +308,8 @@ apiDetail = [
 |               |                        |              |              |
 | **输出参数**  | **参数名称**           | **参数类型** | **参数描述** |
 |               | [basic_net_dto]        | array        | 网络列表     |
+
+
 
 ## :herb:License
 
