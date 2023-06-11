@@ -3,6 +3,7 @@ import Docxtemplater from "docxtemplater";
 import yaml from "yaml";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
 
 //接口列表
 const getApiList = (yamlFile) => {
@@ -90,8 +91,6 @@ const getApiDetail = (yamlFile) => {
             ? schema.format
             : schema.enum
             ? schema.enum
-            : schema.name
-            ? schema.name
             : `[${schema.items["$ref"].split("/").slice(-1)}]`,
           type: schema.type ?? "object",
           description: schema.description ?? "",
@@ -117,6 +116,8 @@ const getApiDetail = (yamlFile) => {
 
 const exportWordDoc = (demoUrl, outUrl, fileName) => {
   //读
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
   const file = fs.readFileSync(path.join(__dirname, `./${fileName}`), "utf8");
   const yamlFile = yaml.parse(file);
 
@@ -144,6 +145,7 @@ const exportWordDoc = (demoUrl, outUrl, fileName) => {
     compression: "DEFLATE",
   });
   fs.writeFileSync(path.resolve(__dirname, `./${outUrl}`), buf);
+  console.log("文件写入成功");
 };
 
 export default exportWordDoc;
