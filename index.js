@@ -1,8 +1,8 @@
-const PizZip = require("pizzip");
-const Docxtemplater = require("docxtemplater");
-const yaml = require("yaml");
-const path = require("path");
-const fs = require("fs");
+import PizZip from "pizzip";
+import Docxtemplater from "docxtemplater";
+import yaml from "yaml";
+import path from "path";
+import fs from "fs";
 
 //接口列表
 const getApiList = (yamlFile) => {
