@@ -115,7 +115,7 @@ const getApiDetail = (yamlFile) => {
   return apiDetail;
 };
 
-export default exportWordDoc = (demoUrl, outUrl, fileName) => {
+const exportWordDoc = (demoUrl, outUrl, fileName) => {
   //读
   const file = fs.readFileSync(path.join(__dirname, `./${fileName}`), "utf8");
   const yamlFile = yaml.parse(file);
@@ -146,4 +146,4 @@ export default exportWordDoc = (demoUrl, outUrl, fileName) => {
   fs.writeFileSync(path.resolve(__dirname, `./${outUrl}`), buf);
 };
 
-// exportWordDoc("in.docx", "out.docx", "openapi-resource.yaml");
+export default exportWordDoc;
