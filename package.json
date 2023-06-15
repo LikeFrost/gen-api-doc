@@ -1,6 +1,6 @@
 {
   "name": "yaml-api-doc",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "根据yaml自动生成doc接口文档",
   "main": "index.js",
   "scripts": {
