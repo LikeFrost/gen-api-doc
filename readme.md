@@ -231,8 +231,6 @@ apiDetail = [
 
 #### :pushpin: 组件定义
 
----
-
 {#components}
 
 表 {index} {name}定义
@@ -248,8 +246,6 @@ apiDetail = [
 
 
 #### :pushpin: 接口详情
-
----
 
 {#apiDetail}
 
